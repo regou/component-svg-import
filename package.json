@@ -1,0 +1,30 @@
+{
+  "name": "component-svg-import",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.js",
+  "scripts": {
+    "server": "sk-server",
+    "dev": "sk-bundle"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/regou/component-svg-import.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/regou/component-svg-import/issues"
+  },
+  "homepage": "https://github.com/regou/component-svg-import#readme",
+  "dependencies": {
+    "rxjs": "^5.0.0-rc.4",
+    "skatejs": "^4.1.1",
+    "skatejs-web-components": "^5.0.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "jquery": "^3.1.1",
+    "skatejs-build": "^12.1.0"
+  }
+}
