@@ -1,17 +1,17 @@
 import 'skatejs-web-components';
 
-import * as skate from 'skatejs';
-const React = { createElement: skate.h };
+import {Component, prop, h} from 'skatejs';
+const React = { createElement: h };
 
 
 
-customElements.define('svg-import', class extends skate.Component {
+customElements.define('svg-import', class extends Component {
 	static get props () {
 		return {
 			// By declaring the property an attribute, we can now pass an initial value
 			// for the count as part of the HTML.
-			src: skate.prop.string({ attribute: true }),
-			'inner-style': skate.prop.string({ attribute: true }),
+			src: prop.string({ attribute: true }),
+			'inner-style': prop.string({ attribute: true }),
 		};
 	}
 	updateXml(){
@@ -88,7 +88,7 @@ customElements.define('svg-import', class extends skate.Component {
 		`;
 
 		return ([
-			skate.h('style', defBoxStyle + comp['inner-style']),
+			h('style', defBoxStyle + comp['inner-style']),
 			<figure role="image" className="svg-import-wrap"></figure>
 		])
 	}

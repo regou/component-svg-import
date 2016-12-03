@@ -2,10 +2,11 @@
   "name": "component-svg-import",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/index.js",
+  "main": "./dist/index.min.js",
   "scripts": {
     "server": "sk-server",
-    "dev": "sk-bundle"
+    "dev": "sk-bundle",
+    "release": "sk-release"
   },
   "repository": {
     "type": "git",
