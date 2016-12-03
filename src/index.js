@@ -11,8 +11,7 @@ customElements.define('svg-import', class extends skate.Component {
 			// By declaring the property an attribute, we can now pass an initial value
 			// for the count as part of the HTML.
 			src: skate.prop.string({ attribute: true }),
-			width: skate.prop.number({ attribute: true }),
-			height: skate.prop.number({ attribute: true }),
+			'inner-style': skate.prop.string({ attribute: true }),
 		};
 	}
 	updateXml(){
@@ -21,33 +20,42 @@ customElements.define('svg-import', class extends skate.Component {
 		}
 		let comp = this;
 
-		comp.xmlData = '';
+
 		const $ = jQuery;
 
 
-		$.get({url:this.src,cache:true,async:false})
+		$.get({url:this.src,cache:true,async:true})
 			.then(function (xml) {
 
 				var $svg = $(xml).find('svg');
-				$svg = $svg.removeAttr('xmlns:a');
-
-				if(!$svg.attr('viewBox') && comp.width && comp.height) {
-					$svg.attr('viewBox', '0 0 ' + comp.height + ' ' + comp.width)
+				var svg = $svg.get(0);
+				svg.removeAttribute('xmlns:a');
+				if(comp.width && comp.height){
+					// svg.hasAttribute('viewBox') ? svg.setAttribute('viewBox', '0 0 ' + comp.height + ' ' + comp.width) : '';
+					svg.setAttribute('width','100%');
+					svg.setAttribute('height','100%');
 				}
 
-				comp.xmlData = $svg.html();
+				// comp.xmlData = $svg.clone().wrap('<div/>').parent().html();
+				var wraper = $(comp.shadowRoot).find('.svg-import-wrap').get(0);
+
+				wraper.innerHTML = '';
+				wraper.appendChild(svg);
 
 			})
 	}
 	connectedCallback () {
 		// Ensure we call the parent.
 		super.connectedCallback();
-		this.updateXml();
+		//this.updateXml();
 
 	}
 	attributeChangedCallback (name, oldValue, newValue) {
 		super.attributeChangedCallback(name, oldValue, newValue);
-		this.updateXml();
+		if(name == 'src'){
+			this.updateXml();
+		}
+
 	}
 	disconnectedCallback () {
 		// Ensure we callback the parent.
@@ -62,19 +70,26 @@ customElements.define('svg-import', class extends skate.Component {
 		var comp = this;
 
 		const defBoxStyle = `
+			:host{display:inline-block;}
 			.svg-import-wrap{
 				overflow:hidden;
 				margin:0;
 				padding:0;
-				width:${comp.width}px;
-				height:${comp.height}px;
-				display:inline-block;
+				width:100%;
+				height:100%;
+				min-width:5px;
+				min-height:5px;
+				display:block;
+			}
+			svg{
+				width:100%;
+				height:100%;
 			}
 		`;
 
 		return ([
-			skate.h('style', defBoxStyle),
-			<figure role="image" className="svg-import-wrap">{comp.xmlData}</figure>
+			skate.h('style', defBoxStyle + comp['inner-style']),
+			<figure role="image" className="svg-import-wrap"></figure>
 		])
 	}
 });

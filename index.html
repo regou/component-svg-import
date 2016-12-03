@@ -6,8 +6,23 @@
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./dist/index-with-deps.js"></script>
+    <style>
+        #radio::shadow #Radio{fill: red;}
+
+        svg-import{width: 75px;height: 75px;}
+    </style>
 </head>
 <body>
-<svg-import width="35" height="35" src="/test_svgs/radio.svg"></svg-import>
+
+<p>
+    <svg-import inner-style="#quote-left{fill:#d36e45}" src="/test_svgs/quote-left.svg"></svg-import>
+</p>
+<p>
+    <svg-import id="radio" src="/test_svgs/radio.svg"></svg-import>
+</p>
+
+
+
+
 </body>
 </html>
