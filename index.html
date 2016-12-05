@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
+    <link rel="stylesheet" href="./src/style.css"/>
+
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./dist/index-with-deps.js"></script>
     <style>
-        #radio::shadow #Radio{fill: red;}
-
         svg-import{width: 75px;height: 75px;}
+        #svg2::shadow #Radio{fill: #fe0014;}
     </style>
 </head>
 <body>
 
 <p>
-    <svg-import inner-style="#quote-left{fill:#d36e45}" src="/test_svgs/quote-left.svg"></svg-import>
+    <svg-import inner-style="#quote-left{fill:#d36e45}" src="/test_svgs/quote-left.svg">
+    </svg-import>
 </p>
 <p>
-    <svg-import id="radio" src="/test_svgs/radio.svg"></svg-import>
+    <svg-import id="svg2" src="/test_svgs/radio.svg">
+    </svg-import>
 </p>
-
 
 
 
