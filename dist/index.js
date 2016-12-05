@@ -2603,16 +2603,11 @@ customElements.define('svg-import', function (_Component) {
 
 			this.src$.next(comp.src);
 
-			return skatejs.h(
-				'div',
+			return [skatejs.h(
+				'style',
 				null,
-				skatejs.h(
-					'style',
-					null,
-					defBoxStyle + comp['inner-style']
-				),
-				skatejs.h('figure', { role: 'image', className: 'svg-import-wrap' })
-			);
+				defBoxStyle + comp['inner-style']
+			), skatejs.h('figure', { role: 'image', className: 'svg-import-wrap' })];
 		}
 	}]);
 	return _class;

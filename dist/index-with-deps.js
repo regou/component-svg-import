@@ -211,16 +211,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 				this.src$.next(comp.src);
 	
-				return React.createElement(
-					'div',
+				return [React.createElement(
+					'style',
 					null,
-					React.createElement(
-						'style',
-						null,
-						defBoxStyle + comp['inner-style']
-					),
-					React.createElement('figure', { role: 'image', className: 'svg-import-wrap' })
-				);
+					defBoxStyle + comp['inner-style']
+				), React.createElement('figure', { role: 'image', className: 'svg-import-wrap' })];
 			}
 		}]);
 	

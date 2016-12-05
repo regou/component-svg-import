@@ -128,11 +128,9 @@ customElements.define('svg-import', class extends Component {
 
 		this.src$.next(comp.src);
 
-		return (
-			<div>
-				<style>{defBoxStyle + comp['inner-style']}</style>
-				<figure role="image" className="svg-import-wrap"></figure>
-			</div>
-		)
+		return [
+			<style>{defBoxStyle + comp['inner-style']}</style>,
+			<figure role="image" className="svg-import-wrap"></figure>
+		]
 	}
 });
